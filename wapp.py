@@ -1,18 +1,14 @@
 import requests
 import json
-
 city = input("City Name: ")
-
 url = f"http://api.weatherapi.com/v1/current.json?key=8de403809a3b406e8eb195106240902&q={city}"
 response = requests.get(url)
 weather_data = response.json()
 current_weather = weather_data.get("current", {})
 temperature_celsius = current_weather.get("temp_c")
 humidity = current_weather.get("humidity")
-
 print("Temperature (C):", temperature_celsius,"°C")
 print("Humidity:", humidity)
-
 option = int(input("Select an option:\n1. Wind Speed (kph)\n2. Wind Speed (mph)\n3. Wind Degree\n4. Wind Direction\n5. Pressure (mb)\n6. Pressure (in)\n7. Precipitation (mm)\n8. Precipitation (in)\n9. Cloud\n10. Feels Like (C)\n11. Feels Like (F)\n12. Visibility (km)\n13. Visibility (miles)\n14. UV\n15. Wind Gust (mph)\n16. Wind Gust (kph)\n0. Exit\nEnter option number: "))
 match option:
     case 1:
